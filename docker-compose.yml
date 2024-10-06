@@ -1,0 +1,18 @@
+networks:
+  agronetwork:
+    name: agronetwork
+    driver: bridge
+
+services:
+
+  backend-images-manager:
+    container_name: backend-images-manager
+    networks:
+      - agronetwork
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
+    env_file:
+      - local/.env

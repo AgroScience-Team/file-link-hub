@@ -1,0 +1,16 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${HOST_DB}:${PORT_DB}/${POSTGRES_DB}?currentSchema=file_link_hub
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  liquibase:
+    change-log: liquibase/changelog.yaml
+
+springdoc:
+  swagger-ui:
+    path: /docs
+

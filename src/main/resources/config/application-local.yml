@@ -1,0 +1,14 @@
+# Postgres
+HOST_DB: localhost
+PORT_DB: 5440
+POSTGRES_USER: postgres
+POSTGRES_PASSWORD: postgres
+POSTGRES_DB: postgres
+
+# MINIO
+S3_URL: minio:9000
+S3_USER: minioadmin
+S3_PASSWORD: minioadmin
+S3_PORT: 9000
+
+
