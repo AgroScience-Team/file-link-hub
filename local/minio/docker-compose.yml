@@ -12,9 +12,9 @@ services:
       - '9090:9090'
       - '9000:9000'
     volumes:
-      - minio-api-data:/minio
+      - agro-s3:/minio
     networks:
       - agronetwork
 
 volumes:
-  minio-api-data:
+  agro-s3:
