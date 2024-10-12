@@ -14,3 +14,7 @@ springdoc:
   swagger-ui:
     path: /docs
 
+s3:
+  url: ${S3_URL}
+  user: ${S3_USER}
+  password: ${S3_PASSWORD}
