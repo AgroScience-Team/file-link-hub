@@ -1,8 +1,8 @@
 package agro.filelinkhub.infra.output;
 
 import agro.filelinkhub.configs.annotations.Command;
-import agro.filelinkhub.domain.File;
-import agro.filelinkhub.domain.JsonWriter;
+import agro.filelinkhub.domain.upload.File;
+import agro.filelinkhub.domain.upload.JsonWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;

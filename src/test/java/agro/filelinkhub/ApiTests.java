@@ -3,8 +3,8 @@ package agro.filelinkhub;
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import agro.filelinkhub.domain.Link;
-import agro.filelinkhub.domain.tiff.MultiLayerTiff;
+import agro.filelinkhub.domain.upload.Link;
+import agro.filelinkhub.domain.upload.tiff.MultiLayerTiff;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

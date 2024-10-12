@@ -1,6 +1,7 @@
-package agro.filelinkhub.domain;
+package agro.filelinkhub.domain.upload;
 
 import agro.filelinkhub.configs.annotations.DomainService;
+import agro.filelinkhub.domain.ComponentsMap;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

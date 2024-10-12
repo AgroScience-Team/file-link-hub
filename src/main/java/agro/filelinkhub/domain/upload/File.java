@@ -1,4 +1,4 @@
-package agro.filelinkhub.domain;
+package agro.filelinkhub.domain.upload;
 
 public interface File {
 

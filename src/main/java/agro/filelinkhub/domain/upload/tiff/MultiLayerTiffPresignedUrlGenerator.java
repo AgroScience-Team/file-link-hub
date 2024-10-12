@@ -1,11 +1,11 @@
-package agro.filelinkhub.domain.tiff;
+package agro.filelinkhub.domain.upload.tiff;
 
 import static io.minio.http.Method.PUT;
 
 import agro.filelinkhub.configs.annotations.Query;
-import agro.filelinkhub.domain.Link;
-import agro.filelinkhub.domain.PresignedUrlGenerator;
 import agro.filelinkhub.domain.exceptions.LinksGenerationException;
+import agro.filelinkhub.domain.upload.Link;
+import agro.filelinkhub.domain.upload.PresignedUrlGenerator;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.MinioClient;
 import java.util.List;

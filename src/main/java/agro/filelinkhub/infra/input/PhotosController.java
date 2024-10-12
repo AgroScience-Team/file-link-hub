@@ -1,7 +1,7 @@
 package agro.filelinkhub.infra.input;
 
-import agro.filelinkhub.domain.FileManager;
-import agro.filelinkhub.domain.Link;
+import agro.filelinkhub.domain.upload.FileManager;
+import agro.filelinkhub.domain.upload.Link;
 import agro.filelinkhub.infra.input.dto.MultiLayerTiffUploadRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

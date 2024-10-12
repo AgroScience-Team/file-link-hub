@@ -1,4 +1,4 @@
-package agro.filelinkhub.domain;
+package agro.filelinkhub.domain.upload;
 
 import agro.filelinkhub.configs.annotations.Query;
 import lombok.RequiredArgsConstructor;

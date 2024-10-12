@@ -2,8 +2,8 @@ package agro.filelinkhub.infra.input.dto;
 
 import static agro.filelinkhub.infra.input.dto.Constants.NOT_NULL_MESSAGE;
 
-import agro.filelinkhub.domain.File;
-import agro.filelinkhub.domain.tiff.MultiLayerTiff;
+import agro.filelinkhub.domain.upload.File;
+import agro.filelinkhub.domain.upload.tiff.MultiLayerTiff;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
