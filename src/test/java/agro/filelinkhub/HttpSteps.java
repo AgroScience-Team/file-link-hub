@@ -28,11 +28,7 @@ public abstract class HttpSteps extends S3Steps {
     return restTemplate.exchange(url, method, entity, String.class);
   }
 
-  public ResponseEntity<String> sengPostRequest(
-          final String url,
-          final String requestBody
-
-  ) {
+  public ResponseEntity<String> sengPostRequest(final String url, final String requestBody) {
     HttpHeaders headers = new HttpHeaders();
     headers.set("Content-Type", "application/json");
     return sendHttpRequest(url, POST, headers, requestBody);

@@ -6,6 +6,6 @@ public interface PresignedUrlGenerator<T extends File> {
 
   Class<T> key();
 
-  List<Link> generatePresignedUrl(T file, int expiration);
+  List<UploadLink> generatePresignedUrl(T file, int expiration);
 
 }

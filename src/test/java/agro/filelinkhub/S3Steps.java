@@ -6,8 +6,10 @@ import io.minio.GetObjectArgs;
 import io.minio.ListObjectsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
+import io.minio.PutObjectArgs;
 import io.minio.RemoveObjectArgs;
 import io.minio.messages.Item;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import lombok.SneakyThrows;
@@ -89,6 +91,19 @@ public abstract class S3Steps extends AbstractTest {
       return mapper.readValue(inputStream, clazz);
 
     }
+  }
+
+  @SneakyThrows
+  protected void fileExistsInBucket(String name, String bucket, byte[] content) {
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(content);
+    minioClient.putObject(
+            PutObjectArgs.builder()
+                    .bucket(bucket)
+                    .object(name)
+                    .stream(inputStream, content.length, -1)
+                    .contentType("application/octet-stream")
+                    .build()
+    );
   }
 
 }
