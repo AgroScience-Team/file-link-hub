@@ -12,7 +12,6 @@ import lombok.ToString;
 public class MultiLayerTiff implements File {
 
   private final String type = "MultiLayerTiff";
-  private String photoId;
   private final String fieldId;
   private final LocalDate photoDate;
   private final String photoExtension;
@@ -20,6 +19,7 @@ public class MultiLayerTiff implements File {
    * List of layer names, which contains names such as red, green, nir etc.
    */
   private final List<String> layers;
+  private String photoId;
 
   public MultiLayerTiff(String fieldId, LocalDate photoDate, String photoExtension, List<String> layers) {
     this.fieldId = fieldId;

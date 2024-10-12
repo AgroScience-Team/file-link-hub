@@ -17,12 +17,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class S3Steps extends AbstractTest {
 
+  private static final String BUCKET_NAME = "agro-photos";
   @Autowired
   private MinioClient minioClient;
   @Autowired
   private ObjectMapper mapper;
 
-  private static final String BUCKET_NAME = "agro-photos";
+  @SneakyThrows
+  public static String fileName(String s3Url) {
+    URI uri = new URI(s3Url);
+    String path = uri.getPath();
+
+    if (path.startsWith("/")) {
+      path = path.substring(1);
+    }
+
+    String[] parts = path.split("/");
+
+    if (parts.length >= 2) {
+      var fullName = parts[parts.length - 1];
+      String[] fileNameParts = fullName.split("\\.");
+      return fileNameParts[0];
+    }
+
+    throw new IllegalArgumentException("Invalid S3 URL: " + s3Url);
+  }
 
   @BeforeEach
   @SneakyThrows
@@ -70,26 +89,6 @@ public abstract class S3Steps extends AbstractTest {
       return mapper.readValue(inputStream, clazz);
 
     }
-  }
-
-  @SneakyThrows
-  public static String fileName(String s3Url) {
-    URI uri = new URI(s3Url);
-    String path = uri.getPath();
-
-    if (path.startsWith("/")) {
-      path = path.substring(1);
-    }
-
-    String[] parts = path.split("/");
-
-    if (parts.length >= 2) {
-      var fullName = parts[parts.length - 1];
-      String[] fileNameParts = fullName.split("\\.");
-      return fileNameParts[0];
-    }
-
-    throw new IllegalArgumentException("Invalid S3 URL: " + s3Url);
   }
 
 }

@@ -4,11 +4,9 @@ import agro.filelinkhub.configs.annotations.DomainService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 
 @DomainService
 @RequiredArgsConstructor
-@Slf4j
 public class FileManagerImpl implements FileManager {
 
   private final FileNameGenerator generators;
