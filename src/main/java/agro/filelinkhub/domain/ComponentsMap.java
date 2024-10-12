@@ -18,8 +18,7 @@ public class ComponentsMap<K, V> {
                     Function.identity(),
                     (existing, replacement) -> {
                       throw new DuplicateKeyException("Duplicate key found: " + keyExtractor.apply(existing));
-                    },
-                    HashMap::new
+                    }
             ));
   }
 

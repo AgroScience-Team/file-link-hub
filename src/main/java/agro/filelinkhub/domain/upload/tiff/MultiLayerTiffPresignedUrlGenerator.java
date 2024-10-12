@@ -1,13 +1,10 @@
 package agro.filelinkhub.domain.upload.tiff;
 
-import static io.minio.http.Method.PUT;
-
 import agro.filelinkhub.configs.annotations.Query;
+import agro.filelinkhub.domain.S3Repo;
 import agro.filelinkhub.domain.exceptions.LinksGenerationException;
-import agro.filelinkhub.domain.upload.Link;
 import agro.filelinkhub.domain.upload.PresignedUrlGenerator;
-import io.minio.GetPresignedObjectUrlArgs;
-import io.minio.MinioClient;
+import agro.filelinkhub.domain.upload.UploadLink;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MultiLayerTiffPresignedUrlGenerator implements PresignedUrlGenerator<MultiLayerTiff> {
 
-  private final MinioClient s3Client;
+  private final S3Repo s3Repo;
 
   @Override
   public Class<MultiLayerTiff> key() {
@@ -23,16 +20,10 @@ public class MultiLayerTiffPresignedUrlGenerator implements PresignedUrlGenerato
   }
 
   @Override
-  public List<Link> generatePresignedUrl(MultiLayerTiff file, int expiration) {
+  public List<UploadLink> generatePresignedUrl(MultiLayerTiff file, int expiration) {
     try {
-      return List.of(new Link(file.extension(), s3Client.getPresignedObjectUrl(
-              GetPresignedObjectUrlArgs.builder()
-                      .bucket(file.bucket())
-                      .object(file.name() + "." + file.extension())
-                      .method(PUT)
-                      .expiry(expiration)
-                      .build()))
-      );
+      String fullName = file.name() + "." + file.extension();
+      return List.of(new UploadLink(file.extension(), s3Repo.uploadUrl(fullName, file.bucket(), expiration)));
     } catch (Exception e) {
       throw new LinksGenerationException(e);
     }

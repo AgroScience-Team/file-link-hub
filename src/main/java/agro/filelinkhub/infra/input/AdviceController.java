@@ -18,9 +18,7 @@ public class AdviceController {
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public ExceptionBody handleValidationException(
-          final MethodArgumentNotValidException e
-  ) {
+  public ExceptionBody handleValidationException(final MethodArgumentNotValidException e) {
     var exceptionBody = new ExceptionBody("Validation failed");
     Map<String, String> body = e.getBindingResult().getFieldErrors().stream().collect(Collectors.toMap(
             FieldError::getField,
@@ -32,18 +30,14 @@ public class AdviceController {
 
   @ExceptionHandler(LinksGenerationException.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  public ExceptionBody handleLinksGenerationExceptionException(
-          final LinksGenerationException e
-  ) {
+  public ExceptionBody handleLinksGenerationExceptionException(final LinksGenerationException e) {
     log.error("{}", e.getMessage(), e);
     return new ExceptionBody(e.getMessage());
   }
 
-  @ExceptionHandler(Exception.class)
+  @ExceptionHandler(RuntimeException.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  public ExceptionBody handleException(
-          final Exception e
-  ) {
+  public ExceptionBody handleException(final RuntimeException e) {
     log.error("Непредвиденная ошибка", e);
     return new ExceptionBody("Непредвиденная ошибка");
   }

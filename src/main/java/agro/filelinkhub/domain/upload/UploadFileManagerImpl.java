@@ -8,7 +8,7 @@ import lombok.SneakyThrows;
 
 @DomainService
 @RequiredArgsConstructor
-public class FileManagerImpl implements FileManager {
+public class UploadFileManagerImpl implements UploadFileManager {
 
   private final FileNameGenerator generators;
   private final JsonWriter jsonWriter;
@@ -16,7 +16,7 @@ public class FileManagerImpl implements FileManager {
 
   @Override
   @SneakyThrows
-  public List<Link> upload(File file, int expiration) {
+  public List<UploadLink> upload(File file, int expiration) {
     generators.generate(file);
     var links = urlsGenerators.get(file.getClass()).generatePresignedUrl(file.impl(), expiration);
     jsonWriter.write(file);

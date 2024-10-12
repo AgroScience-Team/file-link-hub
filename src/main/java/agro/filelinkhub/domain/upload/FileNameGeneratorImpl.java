@@ -1,10 +1,10 @@
 package agro.filelinkhub.domain.upload;
 
-import agro.filelinkhub.configs.annotations.Query;
+import agro.filelinkhub.configs.annotations.Command;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Query
+@Command
 @RequiredArgsConstructor
 @Slf4j
 public class FileNameGeneratorImpl implements FileNameGenerator {
