@@ -1,6 +1,6 @@
-package agro.filelinkhub.domain.tiff;
+package agro.filelinkhub.domain.upload.tiff;
 
-import agro.filelinkhub.domain.File;
+import agro.filelinkhub.domain.upload.File;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;

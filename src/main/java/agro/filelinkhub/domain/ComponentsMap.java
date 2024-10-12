@@ -23,7 +23,7 @@ public class ComponentsMap<K, V> {
             ));
   }
 
-  V get(K key) {
+  public V get(K key) {
     return components.get(key);
   }
 
