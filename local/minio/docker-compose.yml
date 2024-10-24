@@ -16,5 +16,19 @@ services:
     networks:
       - agronetwork
 
+  minio_init:
+    image: minio/mc
+    depends_on:
+      - minio
+    networks:
+      - agronetwork
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set myminio http://minio:9000 minioadmin minioadmin;
+      /usr/bin/mc mb myminio/agro-photos;
+      /usr/bin/mc policy set public myminio/agro-photos;
+      exit 0;
+      "
+
 volumes:
   agro-s3:

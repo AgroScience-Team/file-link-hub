@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import agro.filelinkhub.domain.upload.UploadLink;
-import agro.filelinkhub.domain.upload.tiff.MultiLayerTiff;
+import agro.filelinkhub.models.MultiLayerTiffTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-class ApiTests extends HttpSteps {
+class ApiTests extends MongoSteps {
 
   @Autowired
   ObjectMapperHelper mapper;
@@ -46,7 +46,7 @@ class ApiTests extends HttpSteps {
       assertEquals("tif", link.extension());
 
       String fileName = fileName(link.url());
-      var jsonTiff = getFile(fileName + ".json", "agro-photos", MultiLayerTiff.class);
+      var jsonTiff = findById(fileName, MultiLayerTiffTest.class);
       assertNotNull(jsonTiff);
       assertEquals(jsonTiff.getType(), "MultiLayerTiff");
       assertEquals(jsonTiff.getLayers().size(), 4);

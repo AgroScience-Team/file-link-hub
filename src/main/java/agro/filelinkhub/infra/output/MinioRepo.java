@@ -7,10 +7,7 @@ import agro.filelinkhub.domain.S3Repo;
 import agro.filelinkhub.domain.exceptions.LinksGenerationException;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
-import java.io.ByteArrayInputStream;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -20,20 +17,6 @@ import org.springframework.stereotype.Repository;
 public class MinioRepo implements S3Repo {
 
   private final MinioClient s3Client;
-
-  @Override
-  @SneakyThrows
-  public void upload(ByteArrayInputStream inputStream, String bucketName, String objectName, int size) {
-    s3Client.putObject(
-            PutObjectArgs.builder()
-                    .bucket(bucketName)
-                    .object(objectName)
-                    .stream(inputStream, size, -1)
-                    .contentType("application/json")
-                    .build()
-    );
-    log.info("File uploaded to s3: {} / {}}", bucketName, objectName);
-  }
 
   @Override
   public String uploadUrl(String name, String bucket, int expiration) {

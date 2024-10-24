@@ -1,4 +1,4 @@
-package agro.filelinkhub.configs;
+package agro.filelinkhub.containers;
 
 import static java.util.Objects.isNull;
 

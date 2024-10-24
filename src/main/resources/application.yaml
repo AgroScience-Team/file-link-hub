@@ -18,3 +18,13 @@ s3:
   url: ${S3_URL}
   user: ${S3_USER}
   password: ${S3_PASSWORD}
+
+mongo:
+  user: ${MONGO_USER}
+  password: ${MONGO_PASSWORD}
+  host: ${MONGO_HOST}
+  port: ${MONGO_PORT}
+  db: file_link_hub
+
+images:
+  prefix: new/
