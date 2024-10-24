@@ -10,4 +10,6 @@ public interface S3Repo {
 
   String loadUrl(String name, String bucket, int expiration);
 
+  void save(Object object);
+
 }

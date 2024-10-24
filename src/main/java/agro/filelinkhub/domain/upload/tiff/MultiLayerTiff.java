@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @ToString
+@Document(collection = "photos")
 public class MultiLayerTiff implements File {
 
+  @Id
+  private String photoId;
   private final String type = "MultiLayerTiff";
   private final String fieldId;
   private final LocalDate photoDate;
@@ -19,7 +24,6 @@ public class MultiLayerTiff implements File {
    * List of layer names, which contains names such as red, green, nir etc.
    */
   private final List<String> layers;
-  private String photoId;
 
   public MultiLayerTiff(String fieldId, LocalDate photoDate, String photoExtension, List<String> layers) {
     this.fieldId = fieldId;

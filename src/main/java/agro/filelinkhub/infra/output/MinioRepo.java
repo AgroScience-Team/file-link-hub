@@ -12,6 +12,7 @@ import java.io.ByteArrayInputStream;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Slf4j
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Repository;
 public class MinioRepo implements S3Repo {
 
   private final MinioClient s3Client;
+
+  private final MongoTemplate mongoTemplate;
 
   @Override
   @SneakyThrows
@@ -63,6 +66,11 @@ public class MinioRepo implements S3Repo {
     } catch (Exception e) {
       throw new LinksGenerationException(e);
     }
+  }
+
+  @Override
+  public void save(Object object) {
+    mongoTemplate.save(object);
   }
 
 }
