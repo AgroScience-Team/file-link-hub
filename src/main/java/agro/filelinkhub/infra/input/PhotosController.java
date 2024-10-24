@@ -5,6 +5,7 @@ import agro.filelinkhub.domain.upload.UploadFileManager;
 import agro.filelinkhub.domain.upload.UploadLink;
 import agro.filelinkhub.infra.input.dto.LoadRequest;
 import agro.filelinkhub.infra.input.dto.MultiLayerTiffUploadRequest;
+import agro.filelinkhub.infra.mappers.FileMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -22,6 +23,7 @@ public class PhotosController {
 
   private final UploadFileManager uploadFileManager;
   private final LoadFileManager loadFileManager;
+  private final FileMapper mapper;
 
   @PostMapping("/upload/multi-layer-tiff")
   @Operation(description = "Запрос на получение ссылки для загрузки")
@@ -29,7 +31,7 @@ public class PhotosController {
           final int expiration,
           final @RequestBody @Valid MultiLayerTiffUploadRequest request
   ) {
-    return uploadFileManager.upload(request.map(), expiration);
+    return uploadFileManager.upload(mapper.map(request), expiration);
   }
 
   @PostMapping("/load")

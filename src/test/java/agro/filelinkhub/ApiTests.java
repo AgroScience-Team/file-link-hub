@@ -27,7 +27,24 @@ class ApiTests extends MongoSteps {
                       "fieldId": "BaC131D5-113F-da4b-B0F5-391BfA183EcF",
                       "photoDate": "2024-10-10",
                       "photoExtension": "tif",
-                      "layers": ["red", "green", "blue", "nir"]
+                      "layers": [
+                        {
+                          "index": 1,
+                          "name": "red"
+                        },
+                        {
+                          "index": 2,
+                          "name": "green"
+                        },
+                        {
+                          "index": 3,
+                          "name": "blue"
+                        },
+                        {
+                          "index": 5,
+                          "name": "nir"
+                        }
+                      ]
                     }
                     """
     );

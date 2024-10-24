@@ -23,9 +23,9 @@ public class MultiLayerTiff implements File {
   /**
    * List of layer names, which contains names such as red, green, nir etc.
    */
-  private final List<String> layers;
+  private final List<Layer> layers;
 
-  public MultiLayerTiff(String fieldId, LocalDate photoDate, String photoExtension, List<String> layers) {
+  public MultiLayerTiff(String fieldId, LocalDate photoDate, String photoExtension, List<Layer> layers) {
     this.fieldId = fieldId;
     this.photoDate = photoDate;
     this.photoExtension = photoExtension;
