@@ -8,6 +8,8 @@ services:
     image: minio/minio:RELEASE.2024-02-14T21-36-02Z
     container_name: minio
     command: server ~/minio --console-address :9090
+    environment:
+      MINIO_BROWSER_REDIRECT_URL: http://localhost:9000
     ports:
       - '9090:9090'
       - '9000:9000'
