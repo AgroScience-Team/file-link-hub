@@ -24,9 +24,9 @@ class ApiTests extends MongoSteps {
             "/api/v1/filelinkhub/upload/multi-layer-tiff?expiration=60",
             """
                     {
-                      "fieldId": "BaC131D5-113F-da4b-B0F5-391BfA183EcF",
-                      "photoDate": "2024-10-10",
-                      "photoExtension": "tif",
+                        "contourId": "00000000-0000-0000-0000-000000000002",
+                      "date": "2024-10-10",
+                      "extension": "tif",
                       "layers": [
                         {
                           "index": 1,
@@ -66,6 +66,8 @@ class ApiTests extends MongoSteps {
       var jsonTiff = findById(fileName, MultiLayerTiffTest.class);
       assertNotNull(jsonTiff);
       assertEquals(jsonTiff.getType(), "MultiLayerTiff");
+      assertEquals(jsonTiff.getContourId(), "00000000-0000-0000-0000-000000000002");
+      assertEquals(jsonTiff.getDate().toString(), "2024-10-10");
       assertEquals(jsonTiff.getLayers().size(), 4);
     }
   }

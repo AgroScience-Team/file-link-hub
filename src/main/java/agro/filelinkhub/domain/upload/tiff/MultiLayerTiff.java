@@ -17,18 +17,23 @@ public class MultiLayerTiff implements File {
   @Id
   private String photoId;
   private final String type = "MultiLayerTiff";
-  private final String fieldId;
-  private final LocalDate photoDate;
-  private final String photoExtension;
+  private final String contourId;
+  private final LocalDate date;
+  private final String extension;
   /**
    * List of layer names, which contains names such as red, green, nir etc.
    */
   private final List<Layer> layers;
 
-  public MultiLayerTiff(String fieldId, LocalDate photoDate, String photoExtension, List<Layer> layers) {
-    this.fieldId = fieldId;
-    this.photoDate = photoDate;
-    this.photoExtension = photoExtension;
+  public MultiLayerTiff(
+          String contourId,
+          LocalDate date,
+          String extension,
+          List<Layer> layers
+  ) {
+    this.contourId = contourId;
+    this.date = date;
+    this.extension = extension;
     this.layers = layers;
     generateName();
   }
@@ -49,7 +54,7 @@ public class MultiLayerTiff implements File {
 
   @Override
   public String extension() {
-    return photoExtension;
+    return extension;
   }
 
 }

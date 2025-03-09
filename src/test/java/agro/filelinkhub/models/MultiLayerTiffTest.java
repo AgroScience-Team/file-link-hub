@@ -13,9 +13,9 @@ public class MultiLayerTiffTest {
   @Id
   private String photoId;
   private String type;
-  private String fieldId;
-  private LocalDate photoDate;
-  private String photoExtension;
+  private String contourId;
+  private LocalDate date;
+  private String extension;
   /**
    * List of layer names, which contains names such as red, green, nir etc.
    */
