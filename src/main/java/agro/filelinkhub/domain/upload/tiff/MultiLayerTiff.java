@@ -1,7 +1,7 @@
 package agro.filelinkhub.domain.upload.tiff;
 
 import agro.filelinkhub.domain.upload.File;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import lombok.Getter;
@@ -18,7 +18,7 @@ public class MultiLayerTiff implements File {
   private String photoId;
   private final String type = "MultiLayerTiff";
   private final String contourId;
-  private final LocalDate date;
+  private final Instant date;
   private final String extension;
   /**
    * List of layer names, which contains names such as red, green, nir etc.
@@ -27,7 +27,7 @@ public class MultiLayerTiff implements File {
 
   public MultiLayerTiff(
           String contourId,
-          LocalDate date,
+          Instant date,
           String extension,
           List<Layer> layers
   ) {

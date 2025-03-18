@@ -1,6 +1,6 @@
 package agro.filelinkhub.models;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -14,11 +14,8 @@ public class MultiLayerTiffTest {
   private String photoId;
   private String type;
   private String contourId;
-  private LocalDate date;
+  private Instant date;
   private String extension;
-  /**
-   * List of layer names, which contains names such as red, green, nir etc.
-   */
   private List<String> layers;
 
 }
