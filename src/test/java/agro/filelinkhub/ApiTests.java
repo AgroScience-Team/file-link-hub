@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import agro.filelinkhub.domain.upload.UploadLink;
 import agro.filelinkhub.models.MultiLayerTiffTest;
+import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ class ApiTests extends MongoSteps {
             "/api/v1/filelinkhub/upload/multi-layer-tiff?expiration=60",
             """
                     {
-                        "contourId": "00000000-0000-0000-0000-000000000002",
-                      "date": "2024-10-10",
+                      "contourId": "00000000-0000-0000-0000-000000000002",
+                      "date": "2024-08-02T12:00:00Z",
                       "extension": "tif",
                       "layers": [
                         {
@@ -67,7 +68,7 @@ class ApiTests extends MongoSteps {
       assertNotNull(jsonTiff);
       assertEquals(jsonTiff.getType(), "MultiLayerTiff");
       assertEquals(jsonTiff.getContourId(), "00000000-0000-0000-0000-000000000002");
-      assertEquals(jsonTiff.getDate().toString(), "2024-10-10");
+      assertEquals(jsonTiff.getDate().toString(), "2024-08-02T12:00:00Z");
       assertEquals(jsonTiff.getLayers().size(), 4);
     }
   }

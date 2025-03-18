@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 import lombok.Data;
 
@@ -19,7 +19,7 @@ public class MultiLayerTiffUploadRequest {
 
   @NotNull(message = NOT_NULL_MESSAGE)
   @PastOrPresent(message = "Должно быть в прошлом или настоящем")
-  private LocalDate date;
+  private Instant date;
 
   @NotNull(message = NOT_NULL_MESSAGE)
   @Pattern(regexp = "^(tif|tiff)$", message = "Должно быть 'tif' или 'tiff'")
