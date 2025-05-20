@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import agro.filelinkhub.domain.upload.UploadLink;
 import agro.filelinkhub.models.MultiLayerTiffTest;
-import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ class ApiTests extends MongoSteps {
   void testUploadMultiLayersTiffEndpoint() {
     // When
     var response = sengPostRequest(
-            "/api/v1/filelinkhub/upload/multi-layer-tiff?expiration=60",
+            "/api/v1/file-link-hub/upload/multi-layer-tiff?expiration=60",
             """
                     {
                       "contourId": "00000000-0000-0000-0000-000000000002",
@@ -86,7 +85,7 @@ class ApiTests extends MongoSteps {
 
     // When
     ResponseEntity<String> response = sengPostRequest(
-            "/api/v1/filelinkhub/load?expiration=60",
+            "/api/v1/file-link-hub/load?expiration=60",
             """
               {
                 "bucket": "agro-photos",
